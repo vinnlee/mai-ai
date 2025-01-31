@@ -1,18 +1,23 @@
 import React from 'react';
+import { useEffect } from 'react';
 
 import PageTitle from '../components/PageTitle';
 import TextField from '../components/TextField';
 import Button from '../components/Button';
 import banner from '../assets/banner.jpg';
 
-import { Link, Form, useNavigation } from 'react-router-dom';
+import { Link, Form, useNavigation, useActionData } from 'react-router-dom';
 import { GrRobot } from 'react-icons/gr';
 import Footer from '../components/Footer';
 import LoaderingBar from '../components/LoaderingBar';
 
 const Signup: React.FC = () => {
+  const error = useActionData();
+
   const navigation = useNavigation();
-  console.log(navigation.state);
+
+  useEffect(() => {}, [error]);
+
   return (
     <>
       <PageTitle title="Sign up to create a account" />
@@ -46,7 +51,6 @@ const Signup: React.FC = () => {
                 placeholder="Full Name"
                 required={true}
                 autoFocus={true}
-                helperTxt="hello"
               />
 
               <TextField
