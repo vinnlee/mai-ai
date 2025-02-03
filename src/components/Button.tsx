@@ -2,7 +2,7 @@ import React from 'react';
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   classes?: string;
-  variant?: 'valid' | 'inValid';
+  variant?: 'valid' | 'inValid'; //
   // color?: string;
   children: React.ReactNode;
 };
@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button className={`btn ${variant} ${classes}`} {...rest}>
       {children}
-      <div className="state-layer"></div>
+      <div className=""></div>
     </button>
   );
 };
