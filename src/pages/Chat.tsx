@@ -2,6 +2,7 @@ import PageTitle from "../components/PageTitle"
 
 import { useLoaderData } from "react-router-dom"
 import UserPrompt from "../components/UserPrompt";
+import MaiResponse from "../components/MaiResponse";
 
 const Chat = () => {
   const {
@@ -15,7 +16,7 @@ const Chat = () => {
         {convos.map((convo) => (
           <div key={convo.$id}>
             <UserPrompt text={convo.user_prompt} />
-            <p className="">{convo.ai_response}</p>
+            <MaiResponse text={convo.ai_response} />
           </div>
 
         )
@@ -25,4 +26,4 @@ const Chat = () => {
   )
 }
 
-export default Chat
+export default Chat;
