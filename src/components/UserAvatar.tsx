@@ -8,7 +8,11 @@ type UserAvatarProps = {
 };
 
 // takes in name and parses it.
-const UserAvatar: React.FC<UserAvatarProps> = ({ name, className, size = 45 }) => {
+const UserAvatar: React.FC<UserAvatarProps> = ({
+  name,
+  className,
+  size = 45,
+}) => {
   return (
     <div className="rounded-full overflow-hidden min-w-[35px] max-w-[35px] max-h-[35px]">
       <img

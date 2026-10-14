@@ -10,12 +10,12 @@ const loginLoader: LoaderFunction = async () => {
   } catch (error) {
     if (error instanceof AppwriteException) {
       if (error.code === 401) {
-        console.warn("User is not authenticated (Expected behavior).");
+        console.warn('User is not authenticated (Expected behavior).');
       } else {
-        console.error("Unexpected Appwrite error:", error);
+        console.error('Unexpected Appwrite error:', error);
       }
     } else {
-      console.error("Unexpected error:", error);
+      console.error('Unexpected error:', error);
     }
 
     return null;

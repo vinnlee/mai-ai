@@ -21,7 +21,7 @@ const signUpUser = async ({ request }: { request: Request }) => {
 
   try {
     await account.createEmailPasswordSession(email, password);
-    console.log("Session created successfully.")
+    console.log('Session created successfully.');
   } catch (error: unknown) {
     if (error instanceof AppwriteException) {
       console.log('Session Error', error);

@@ -39,8 +39,9 @@ const Signup: React.FC = () => {
               Create an account
             </h2>
             <p className="text-center leading-tight mt-1 mb-3">
-              Sign up today to meet Mai, your new AI companion!<br />Start your
-              journey with Mai now.
+              Sign up today to meet Mai, your new AI companion!
+              <br />
+              Start your journey with Mai now.
             </p>
 
             <Form method="POST" className="grid grid-cols-1 gap-3">

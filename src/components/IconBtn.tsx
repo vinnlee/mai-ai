@@ -28,8 +28,9 @@ const IconBtn: React.FC<IconBtnProps> = ({
 }) => {
   return (
     <button
-      className={` flex justify-center items-center w-10 h-10 ${sizeClasses[size]} ${variantClasses[variant] // ✅ Now TypeScript understands `variant` is valid
-        } ${className}`}
+      className={` flex justify-center items-center w-10 h-10 ${sizeClasses[size]} ${
+        variantClasses[variant]
+      } ${className}`}
       {...props}
     >
       {React.cloneElement(icon, {

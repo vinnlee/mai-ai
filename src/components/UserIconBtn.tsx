@@ -5,11 +5,7 @@ type UserIconBtnProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
 };
 
-const UserIconBtn: React.FC<UserIconBtnProps> = ({
-  icon,
-  children,
-  ...rest
-}) => {
+const UserIconBtn: React.FC<UserIconBtnProps> = ({ children, ...rest }) => {
   return (
     <button className="" {...rest}>
       {children}

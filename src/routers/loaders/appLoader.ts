@@ -26,16 +26,16 @@ const appLoader: LoaderFunction = async (): Promise<AppLoaderData> => {
   try {
     data.chats = await databases.listDocuments(
       import.meta.env.VITE_APPWRITE_DATABASE_ID,
-      "chats",
+      'chats',
       [
         Query.select(['$id', 'title']),
         Query.orderDesc('$createdAt'),
-        Query.equal('user_id', data.user.$id)
-      ]
-    )
+        Query.equal('user_id', data.user.$id),
+      ],
+    );
   } catch (error) {
     if (error instanceof Error) {
-      console.log(`Error loading chats ${error.message}`)
+      console.log(`Error loading chats ${error.message}`);
     }
   }
   return data;

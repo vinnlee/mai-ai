@@ -1,5 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { Outlet, useNavigation, useParams, useActionData } from 'react-router-dom';
+import {
+  Outlet,
+  useNavigation,
+  useParams,
+  useActionData,
+} from 'react-router-dom';
 
 import PageTitle from './components/PageTitle';
 import NavBar from './components/NavBar';
@@ -7,7 +12,7 @@ import SidePanel from './components/SidePanel';
 import Welcome from './pages/Welcome';
 import ChatInput from './components/ChatInput';
 import usePromptPreloader from './hooks/usePromptPreloader';
-import { toast } from "react-toastify"
+import { toast } from 'react-toastify';
 
 const App = () => {
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
@@ -21,19 +26,19 @@ const App = () => {
   // Confirmation message if chat deleted successfully
   useEffect(() => {
     if (resultData?.chatTitle) {
-      toast.success(`Success: Chat ${resultData.chatTitle} deleted!`)
+      toast.success(`Success: Chat ${resultData.chatTitle} deleted!`);
     }
-  }, [resultData])
+  }, [resultData]);
 
   useEffect(() => {
     const hist = histRef.current;
     if (preLoaderVal) {
       hist?.scroll({
         top: hist.scrollHeight - hist.clientHeight,
-        behavior: "smooth"
-      })
+        behavior: 'smooth',
+      });
     }
-  }, [histRef, preLoaderVal])
+  }, [histRef, preLoaderVal]);
 
   const toggleSidePanel = () => {
     setSidePanelOpen((prev) => !prev);
@@ -44,9 +49,11 @@ const App = () => {
 
   return (
     <>
-      <PageTitle title="MAI AI" />
-      <div className={`grid transition-all
-        ${sidePanelOpen ? "md:grid-cols-[330px_1fr]" : "md:grid-cols-[0px_1fr]"}`}>
+      <PageTitle title="Mai AI" />
+      <div
+        className={`grid transition-all
+        ${sidePanelOpen ? 'md:grid-cols-[330px_1fr]' : 'md:grid-cols-[0px_1fr]'}`}
+      >
         {/* sidebar */}
         <SidePanel
           sidePanelOpen={sidePanelOpen}
@@ -58,22 +65,21 @@ const App = () => {
           <NavBar toggleSidePanel={toggleSidePanel} />
 
           {/* Response area area */}
-          <div className="px-4 pb-4 flex flex-col overflow-y-auto mb-6"
+          <div
+            className="px-4 pb-4 flex flex-col overflow-y-auto mb-6"
             ref={histRef}
           >
             <div className="max-w-[830px] w-full mx-auto h-full">
-              {isPageLoad ? null : param.chatId ? (
-                <Outlet />
-              ) : (
-                <Welcome />
-              )}
+              {isPageLoad ? null : param.chatId ? <Outlet /> : <Welcome />}
             </div>
           </div>
 
           {/* Chat area */}
-          <div className="flex flex-col mx-auto justify-center items-center max-w-[830px] w-full gap-3 px-4 md:px-0">
+          <div className="flex flex-col mx-auto justify-center items-center max-w-[830px] w-full gap-3 px-4 md:px-0 pb-3.5">
             <ChatInput />
-            <p>Mai is AI and she can make mistakes.</p>
+            <p className="text-sm text-neutral-600">
+              Mai is AI and she can make mistakes.
+            </p>
           </div>
         </div>
       </div>

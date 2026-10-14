@@ -21,12 +21,10 @@ const SidePanel: React.FC<SidePanelProps> = ({
   sidePanelOpen,
   toggleSidePanel,
 }) => {
-
-  const { chats } = useLoaderData() as { chats: { documents: ChatPreview[] } }
+  const { chats } = useLoaderData() as { chats: { documents: ChatPreview[] } };
   const chatData = chats?.documents || [];
 
   const submit = useSubmit();
-
 
   return (
     <>
@@ -57,20 +55,19 @@ const SidePanel: React.FC<SidePanelProps> = ({
                     to={item.$id}
                     className={({ isActive }) =>
                       `sidePanel-link flex items-center justify-between transition-colors duration-300
-                      ${isActive ? "bg-sky-400/50 dark:bg-sky-800" : ""}`
+                      ${isActive ? 'bg-sky-400/50 dark:bg-sky-800' : ''}`
                     }
                     title={item.title}
                   >
-                    <div className='flex items-center gap-1 w-[85%]'>
+                    <div className="flex items-center gap-1 w-[85%]">
                       <IoChatbubbleEllipsesOutline size={16} />
                       <span className="truncate text-sm">{item.title}</span>
                       <div className="state-layer"></div>
                     </div>
 
                     <button
-                      className='opacity-0 group-hover:opacity-90 cursor-pointer transition-[colors,opacity] 
-                        duration-300 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 hover:dark:text-neutral-200 p-1'
-
+                      className="opacity-0 group-hover:opacity-90 cursor-pointer transition-[colors,opacity] 
+                        duration-300 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 hover:dark:text-neutral-200 p-1"
                       onClick={(e) => {
                         e.stopPropagation();
                         e.preventDefault();
@@ -78,11 +75,11 @@ const SidePanel: React.FC<SidePanelProps> = ({
                         deleteChat({
                           chatId: item.$id,
                           title: item.title,
-                          submit: submit
-                        })
+                          submit: submit,
+                        });
                       }}
                     >
-                      <MdDeleteOutline size={16} className='' />
+                      <MdDeleteOutline size={16} className="" />
                     </button>
                   </NavLink>
                 </div>
@@ -91,8 +88,8 @@ const SidePanel: React.FC<SidePanelProps> = ({
           </div>
 
           <Footer />
-        </div >
-      </div >
+        </div>
+      </div>
 
       <div
         className={`overlay ${sidePanelOpen ? 'open' : ''}`}

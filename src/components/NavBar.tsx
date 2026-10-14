@@ -8,7 +8,7 @@ import {
   useLoaderData,
   // useNavigation,
   useParams,
-  useSubmit
+  useSubmit,
 } from 'react-router-dom';
 import { GrRobot } from 'react-icons/gr';
 import UserAvatar from './UserAvatar';
@@ -35,7 +35,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidePanel }) => {
   const navigate = useNavigate();
   const { user, chats } = useLoaderData() as {
     user: UserModel;
-    chats: { documents: ChatDocument[] }
+    chats: { documents: ChatDocument[] };
   };
   const params = useParams();
   const submit = useSubmit();
@@ -67,21 +67,23 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidePanel }) => {
         {params.chatId && (
           <IconBtn
             icon={<MdDeleteOutline size={20} />}
-            className='lg:hidden '
+            className="lg:hidden "
             onClick={() => {
-              const chat = chats.documents.find((chat) => params.chatId === chat.$id);
+              const chat = chats.documents.find(
+                (chat) => params.chatId === chat.$id,
+              );
 
               if (!chat) {
-                console.warn("Chat not found");
-                toast.error(`Error: Chat not found.`)
-                return
+                console.warn('Chat not found');
+                toast.error(`Error: Chat not found.`);
+                return;
               }
 
               deleteChat({
                 chatId: params.chatId as string,
                 title: chat.title,
-                submit: submit
-              })
+                submit: submit,
+              });
             }}
           />
         )}

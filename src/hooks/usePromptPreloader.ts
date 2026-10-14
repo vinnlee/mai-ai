@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useNavigation } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useNavigation } from 'react-router-dom';
 
 const usePromptPreloader = () => {
   const navigation = useNavigation();
@@ -7,17 +7,16 @@ const usePromptPreloader = () => {
   const [preLoaderVal, setPreLoaderVal] = useState('');
 
   useEffect(() => {
-    // if waiting on prompt 
+    // if waiting on prompt
     if (navigation.formData) {
       const userPrompt = navigation.formData.get('user_prompt');
       setPreLoaderVal(typeof userPrompt === 'string' ? userPrompt : '');
     } else {
       setPreLoaderVal('');
     }
+  }, [navigation.formData]);
 
-  }, [navigation.formData])
-
-  return { preLoaderVal }
-}
+  return { preLoaderVal };
+};
 
 export default usePromptPreloader;

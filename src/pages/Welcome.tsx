@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
 import usePromptPreloader from '../hooks/usePromptPreloader';
 import ContentPreloader from '../components/ContentPreLoader';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 const Welcome = () => {
   const { user } = useLoaderData();

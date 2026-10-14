@@ -1,5 +1,5 @@
 import { useRef, useState, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import IconBtn from './IconBtn';
 import { IoIosSend } from 'react-icons/io';
 import { useNavigation, useParams, useSubmit } from 'react-router-dom';
@@ -55,14 +55,17 @@ const ChatInput = () => {
     // prevent submitting if it is empty or currently submitting
     if (!inputValue || navigation.state === 'submitting') return;
 
-    submit({
-      user_prompt: inputValue,
-      request_type: 'user_prompt'
-    }, {
-      method: 'POST',
-      encType: 'application/x-www-form-urlencoded',
-      action: `/${chatId || ''}`
-    });
+    submit(
+      {
+        user_prompt: inputValue,
+        request_type: 'user_prompt',
+      },
+      {
+        method: 'POST',
+        encType: 'application/x-www-form-urlencoded',
+        action: `/${chatId || ''}`,
+      },
+    );
     chatField.current.innerHTML = '';
     handleChatInputUpdate();
   }, [handleChatInputUpdate, inputValue, navigation.state, chatId]);
